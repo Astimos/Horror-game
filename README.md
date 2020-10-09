@@ -1,2 +1,2 @@
 # Horror-game
-Repository for My Horror game project
+- fps horror-game not much details yet
