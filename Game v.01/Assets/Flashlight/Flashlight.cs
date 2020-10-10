@@ -5,13 +5,12 @@ public class Flashlight : MonoBehaviour
     private bool flashlightEnabled;
     public GameObject flashlight;
     public GameObject lightObj;
-    private float currentEnergy;
-    public float maxEnergy;
+    private static float currentEnergy;
+    public static float maxEnergy;
 
     private float batteries;
     private GameObject batteryPickedUp;
-    private float usedEnergy;
-
+    public static float usedEnergy;
 
     public void Start()
     {
@@ -24,6 +23,7 @@ public class Flashlight : MonoBehaviour
 
         maxEnergy = 50 * batteries;
         currentEnergy = maxEnergy;
+        print("maxEnergy" + maxEnergy);
 
 
         //Turn on|off by pressing F
@@ -91,3 +91,5 @@ public class Flashlight : MonoBehaviour
         }
     }
 }
+
+
