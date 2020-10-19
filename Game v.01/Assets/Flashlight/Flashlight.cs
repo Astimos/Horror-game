@@ -61,8 +61,8 @@ public class Flashlight : MonoBehaviour
             if (currentEnergy > 0) 
             {
                 lightObj.SetActive(true);
-                currentEnergy -= 0.5f * Time.deltaTime;
-                usedEnergy += 10f * Time.deltaTime;
+                currentEnergy -= 0.2f * Time.deltaTime;
+                usedEnergy += 2f * Time.deltaTime;
             }
 
             if (usedEnergy >= 50) 
