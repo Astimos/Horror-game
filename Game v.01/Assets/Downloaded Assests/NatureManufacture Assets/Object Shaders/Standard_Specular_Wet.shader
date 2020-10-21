@@ -28,6 +28,7 @@ Shader "NatureManufacture Shaders/Water/Standard Specular Wet"
 		ZTest LEqual
 		CGPROGRAM
 		#include "UnityStandardUtils.cginc"
+		#include "UnityCG.cginc"
 		#pragma target 3.0
 		#pragma multi_compile_instancing
 		#include "NM_indirect.cginc"
