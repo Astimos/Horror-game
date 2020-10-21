@@ -48,7 +48,6 @@ Shader "NatureManufacture Shaders/Water/Standard Metalic Cover Wet"
 		#include "UnityStandardUtils.cginc"
 		#include "UnityPBSLighting.cginc"
 		#include "Lighting.cginc"
-		#include "UnityCG.cginc"
 		#pragma target 3.0
 		#pragma multi_compile_instancing
 		#define ASE_TEXTURE_PARAMS(textureName) textureName

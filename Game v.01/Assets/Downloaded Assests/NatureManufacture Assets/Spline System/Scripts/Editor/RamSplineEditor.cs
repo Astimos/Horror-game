@@ -714,10 +714,11 @@ public class RamSplineEditor : Editor
         EditorGUILayout.Space();
         GUILayout.Label("Terrain carve:", EditorStyles.boldLabel);
         EditorGUI.indentLevel++;
+
         spline.terrainCarve = EditorGUILayout.CurveField("Terrain carve", spline.terrainCarve);
         spline.terrainSmoothMultiplier = EditorGUILayout.Slider("Smooth", spline.terrainSmoothMultiplier, 0, 20);
         spline.distSmooth = EditorGUILayout.FloatField("Smooth distance", spline.distSmooth);
-
+        spline.maskCarve = LayerMaskField("Layers", spline.maskCarve, true);
         spline.noiseCarve = EditorGUILayout.Toggle("Add noise", spline.noiseCarve);
 
         EditorGUILayout.Space();
@@ -1011,7 +1012,12 @@ public class RamSplineEditor : Editor
         if (spline.currentProfile != null)
         {
             ramFirst.currentProfile = spline.currentProfile;
+            ramFirst.oldProfile = ramFirst.currentProfile;
             ramSecond.currentProfile = spline.currentProfile;
+            ramSecond.oldProfile = ramSecond.currentProfile;
+
+
+
         }
 
         //
@@ -1293,6 +1299,8 @@ public class RamSplineEditor : Editor
             //spline.currentProfile.terrainCarve = spline.terrainCarve;
             spline.currentProfile.distSmooth = spline.distSmooth;
             spline.currentProfile.distSmoothStart = spline.distSmoothStart;
+            spline.currentProfile.maskCarve = spline.maskCarve;
+            
             //spline.currentProfile.terrainPaintCarve = spline.terrainPaintCarve;
 
             spline.currentProfile.noiseCarve = spline.noiseCarve;
@@ -1546,6 +1554,9 @@ public class RamSplineEditor : Editor
         if (spline.distSmoothStart != spline.currentProfile.distSmoothStart)
             return true;
 
+        if (spline.maskCarve != spline.currentProfile.maskCarve)
+            return true;
+
         // if (spline.terrainPaintCarve != spline.currentProfile.terrainPaintCarve)
         //     return true;
 
@@ -1670,6 +1681,7 @@ public class RamSplineEditor : Editor
 
         spline.distSmooth = spline.currentProfile.distSmooth;
         spline.distSmoothStart = spline.currentProfile.distSmoothStart;
+        spline.maskCarve = spline.currentProfile.maskCarve;
         //spline.terrainPaintCarve = spline.currentProfile.terrainPaintCarve;
 
 

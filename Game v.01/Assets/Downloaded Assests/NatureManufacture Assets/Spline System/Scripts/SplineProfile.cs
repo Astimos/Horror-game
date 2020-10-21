@@ -50,6 +50,7 @@ public class SplineProfile : ScriptableObject
     public float distSmooth = 5;
     public float distSmoothStart = 1;
     public AnimationCurve terrainPaintCarve = new AnimationCurve(new Keyframe[] { new Keyframe(0, 0), new Keyframe(1, 1) });
+    public LayerMask maskCarve;
 
 
     public bool noiseCarve = false;

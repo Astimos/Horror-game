@@ -636,8 +636,8 @@ public class LakePolygon : MonoBehaviour
                 // Debug.DrawLine(new Vector3(maxX, 0, maxZ), new Vector3(maxX, 0, maxZ) + Vector3.up * 100, Color.blue, 3);
 
 
-                float terrainTowidth = (1 / sizeX * (terrainData.heightmapResolution - 1));
-                float terrainToheight = (1 / sizeZ * (terrainData.heightmapResolution - 1));
+                float terrainTowidth = (1 / sizeZ * (terrainData.heightmapResolution - 1));
+                float terrainToheight = (1 / sizeX * (terrainData.heightmapResolution - 1));
                 minX -= terrain.transform.position.x + distSmooth;
                 maxX -= terrain.transform.position.x - distSmooth;
 
@@ -956,8 +956,11 @@ public class LakePolygon : MonoBehaviour
                 // Debug.DrawLine(new Vector3(maxX, 0, maxZ), new Vector3(maxX, 0, maxZ) + Vector3.up * 100, Color.blue, 3);
 
 
-                float terrainTowidth = (1 / sizeX * (terrainData.alphamapWidth - 1));
-                float terrainToheight = (1 / sizeZ * (terrainData.alphamapHeight - 1));
+                float terrainTowidth = (1 / sizeZ * (terrainData.alphamapWidth - 1));
+                float terrainToheight = (1 / sizeX * (terrainData.alphamapHeight - 1));
+
+                Debug.Log(terrainTowidth + " " + terrainToheight);
+
                 minX -= terrain.transform.position.x + distSmooth;
                 maxX -= terrain.transform.position.x - distSmooth;
 
@@ -1286,8 +1289,8 @@ public class LakePolygon : MonoBehaviour
             // Debug.DrawLine(new Vector3(maxX, 0, maxZ), new Vector3(maxX, 0, maxZ) + Vector3.up * 100, Color.blue, 3);
 
 
-            float terrainTowidth = (1 / sizeX * (terrainData.detailWidth - 1));
-            float terrainToheight = (1 / sizeZ * (terrainData.detailHeight - 1));
+            float terrainTowidth = (1 / sizeZ * (terrainData.detailWidth - 1));
+            float terrainToheight = (1 / sizeX * (terrainData.detailHeight - 1));
             minX -= terrain.transform.position.x + distanceClearFoliage;
             maxX -= terrain.transform.position.x - distanceClearFoliage;
 

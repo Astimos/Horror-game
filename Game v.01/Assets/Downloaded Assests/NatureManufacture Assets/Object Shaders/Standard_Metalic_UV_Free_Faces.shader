@@ -38,7 +38,6 @@ Shader "NatureManufacture Shaders/Standard Shaders/Standard Metalic UV Free Face
 		#include "UnityStandardUtils.cginc"
 		#include "UnityPBSLighting.cginc"
 		#include "Lighting.cginc"
-		#include "UnityCG.cginc"
 		#pragma target 3.0
 		#ifdef UNITY_PASS_SHADOWCASTER
 			#undef INTERNAL_DATA

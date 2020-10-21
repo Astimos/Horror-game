@@ -192,6 +192,7 @@ public class RamSpline : MonoBehaviour
     public float noiseSizeXPaint = 0.2f;
     public float noiseSizeZPaint = 0.2f;
 
+    public LayerMask maskCarve = 1;
     public AnimationCurve terrainCarve = new AnimationCurve(new Keyframe[] { new Keyframe(0, 0.5f), new Keyframe(10, -4) });
     public float distSmooth = 5;
     public float distSmoothStart = 1;
@@ -829,16 +830,15 @@ public class RamSpline : MonoBehaviour
         {
             if (item != null)
             {
-
-#if UNITY_EDITOR
-                if (EditorApplication.isPlaying)
+                
+                if (Application.isPlaying)
                     Destroy(item.gameObject);
                 else
                     DestroyImmediate(item.gameObject);
-#else
+
                     Destroy(item.gameObject);
 
-#endif
+
 
             }
         }
@@ -1682,7 +1682,7 @@ public class RamSpline : MonoBehaviour
                     {
 
                         point = Vector3.Lerp(rayPointDownNew, rayPointDown, t / (float)detailTerrain) + transform.position;
-                        if (Physics.Raycast(point + Vector3.up * 500, Vector3.down, out hit))
+                        if (Physics.Raycast(point + Vector3.up * 500, Vector3.down, out hit, 10000, maskCarve.value))
                         {
                             if (noiseCarve)
                                 noise = Mathf.PerlinNoise(point.x * noiseSizeX, point.z * noiseSizeZ) * noiseMultiplierOutside - noiseMultiplierOutside * 0.5f;
@@ -1714,7 +1714,7 @@ public class RamSpline : MonoBehaviour
                 {
 
                     point = Vector3.Lerp(rayPointDown, rayPointUp, t / (float)detailTerrain) + transform.position;
-                    if (Physics.Raycast(point + Vector3.up * 500, Vector3.down, out hit))
+                    if (Physics.Raycast(point + Vector3.up * 500, Vector3.down, out hit, 10000, maskCarve.value))
                     {
 
                         if (noiseCarve)
@@ -1747,7 +1747,7 @@ public class RamSpline : MonoBehaviour
                     for (int t = 1; t <= detailTerrain; t++)
                     {
                         point = Vector3.Lerp(rayPointUp, rayPointUpNew, t / (float)detailTerrain) + transform.position;
-                        if (Physics.Raycast(point + Vector3.up * 50, Vector3.down, out hit))
+                        if (Physics.Raycast(point + Vector3.up * 50, Vector3.down, out hit, 10000, maskCarve.value))
                         {
                             if (noiseCarve)
                                 noise = Mathf.PerlinNoise(point.x * noiseSizeX, point.z * noiseSizeZ) * noiseMultiplierOutside - noiseMultiplierOutside * 0.5f;
@@ -2315,8 +2315,8 @@ public class RamSpline : MonoBehaviour
             float sizeX = terrain.terrainData.size.x;
             float sizeY = terrain.terrainData.size.y;
             float sizeZ = terrain.terrainData.size.z;
-            float terrainTowidth = (1 / (float)sizeX * (terrainData.detailWidth - 1));
-            float terrainToheight = (1 / (float)sizeZ * (terrainData.detailHeight - 1));
+            float terrainTowidth = (1 / (float)sizeZ * (terrainData.detailWidth - 1));
+            float terrainToheight = (1 / (float)sizeX * (terrainData.detailHeight - 1));
 
 
 #if UNITY_EDITOR
