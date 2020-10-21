@@ -76,6 +76,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.postprocessing": {
+      "version": "2.3.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.purchasing": {
       "version": "2.0.6",
       "depth": 0,
@@ -156,7 +163,7 @@
       }
     },
     "com.unity.xr.legacyinputhelpers": {
-      "version": "1.3.11",
+      "version": "2.1.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
